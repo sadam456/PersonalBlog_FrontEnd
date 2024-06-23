@@ -13,12 +13,10 @@ import {
   FaPinterest,
   FaYoutube,
 } from "react-icons/fa";
-
 import { FaSquareXTwitter } from "react-icons/fa6";
 
 const About = () => {
-  const { userProfile, favtopic, interests, imagesource, socialmedialink } =
-    useContext(UserContext);
+  const { userProfile, imagesource } = useContext(UserContext);
   const { favoritePosts } = useContext(BlogContext);
 
   const renderFavPosts = () => {
@@ -37,14 +35,22 @@ const About = () => {
   };
 
   const renderFavTopics = () => {
-    return favtopic.map((topic) => {
-      return <p className="item-fav">{topic}</p>;
+    return userProfile.topics?.map((topic) => {
+      return (
+        <p className="item-fav" key={topic}>
+          {topic}
+        </p>
+      );
     });
   };
 
-  const renderIntrests = () => {
-    return interests.map((intrest) => {
-      return <p className="item-fav">{intrest}</p>;
+  const renderInterests = () => {
+    return userProfile.interests?.map((interest) => {
+      return (
+        <p className="item-fav" key={interest}>
+          {interest}
+        </p>
+      );
     });
   };
 
@@ -59,26 +65,15 @@ const About = () => {
           />
           <h1 className="aboutmeh1">About Me</h1>
         </div>
-        <p className="bio">
-          Hi, I'm John Doe, a passionate web developer with over 5 years of
-          experience in building dynamic and responsive websites and
-          applications. My journey in the tech world began with a fascination
-          for coding during my college years, which quickly turned into a
-          rewarding career. I specialize in frontend development with a strong
-          focus on creating intuitive and user-friendly interfaces using HTML,
-          CSS, and JavaScript. I'm also proficient in backend technologies such
-          as Node.js and Python, enabling me to build robust and scalable web
-          solutions.
-        </p>
-        <p className="bio">
-          Throughout my career, I have worked on a variety of projects ranging
-          from small business websites to large-scale applications for
-          enterprise clients. I enjoy the challenge of solving complex problems
-          and continuously learning new technologies to stay up-to-date with the
-          latest industry trends. In my free time, I love contributing to
-          open-source projects, blogging about my coding adventures, and
-          mentoring aspiring developers.
-        </p>
+        {userProfile.bio ? (
+          <p className="bio">{userProfile.bio}</p>
+        ) : (
+          <div className="scrolling-text-container">
+            <div className="scrolling-text">
+              Write about yourself, your experience, your goals...
+            </div>
+          </div>
+        )}
         <h1 className="aboutmeh1">My Skills</h1>
         <ul className="skills">
           {Skills.map((skill, index) => (
@@ -99,7 +94,6 @@ const About = () => {
                   <Lottie loop animationData={animationFav} play />
                 </div>
                 <Link to={"/"}>
-                  {" "}
                   <button className="add-favorite-button">Add Favorites</button>
                 </Link>
               </div>
@@ -113,72 +107,75 @@ const About = () => {
                 <h2 className="headerh2">Favorite Topics</h2>
                 <div className="items-fav-container">{renderFavTopics()}</div>
               </div>
-              <div className="intrests">
+              <div className="interests">
                 <h2 className="headerh2">My Interests</h2>
                 <div className="items-intrest-container">
-                  {renderIntrests()}
+                  {renderInterests()}
                 </div>
               </div>
             </div>
             <div className="social-media">
               <span className="socialTitle">Follow Me On !!!</span>
               <div className="social">
-                <a
-                  className="sidebarIcon"
-                  href={socialmedialink.facebook || "/"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>
-                    <FaFacebook />
-                    <p>Facebook</p>
-                  </span>
-                </a>
-                <a
-                  className="socialIcon"
-                  href={socialmedialink.instagram || "/"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>
-                    <FaInstagramSquare />
-                    <p>Instagram</p>
-                  </span>
-                </a>
-                <a
-                  className="socialIcon"
-                  href={socialmedialink.pintrest || "/"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>
-                    <FaPinterest />
-                    <p>Pinterest</p>
-                  </span>
-                </a>
-                <a
-                  className="socialIcon"
-                  href={socialmedialink.twitter || "/"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>
-                    <FaSquareXTwitter />
-                    <p>Twitter</p>
-                  </span>
-                </a>
-
-                <a
-                  className="socialIcon"
-                  href={socialmedialink.youtube || "/"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>
-                    <FaYoutube />
-                    <p>Youtube</p>
-                  </span>
-                </a>
+                {userProfile.socialMediaLinks && (
+                  <>
+                    <a
+                      className="socialIcon"
+                      href={userProfile.socialMediaLinks.facebook || "/"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>
+                        <FaFacebook />
+                        <p>Facebook</p>
+                      </span>
+                    </a>
+                    <a
+                      className="socialIcon"
+                      href={userProfile.socialMediaLinks.instagram || "/"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>
+                        <FaInstagramSquare />
+                        <p>Instagram</p>
+                      </span>
+                    </a>
+                    <a
+                      className="socialIcon"
+                      href={userProfile.socialMediaLinks.pinterest || "/"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>
+                        <FaPinterest />
+                        <p>Pinterest</p>
+                      </span>
+                    </a>
+                    <a
+                      className="socialIcon"
+                      href={userProfile.socialMediaLinks.twitter || "/"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>
+                        <FaSquareXTwitter />
+                        <p>Twitter</p>
+                      </span>
+                    </a>
+                    <a
+                      className="socialIcon"
+                      href={userProfile.socialMediaLinks.youtube || "/"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>
+                        <FaYoutube />
+                        <p>Youtube</p>
+                      </span>
+                    </a>
+                  </>
+                )}
               </div>
             </div>
           </div>
