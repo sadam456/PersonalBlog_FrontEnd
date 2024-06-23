@@ -1,0 +1,165 @@
+body {
+  background: linear-gradient(135deg, #b5d6e6, #e6f2f7);
+}
+.h-custom {
+  margin-top: 50px;
+  height: 100vh;
+}
+.my-5 {
+  margin-top: 1rem !important;
+  margin-bottom: 3rem !important;
+}
+.shadow-5,
+.p-5 {
+  background: linear-gradient(to right, #e6e6e6, #f9f9f9);
+}
+.lottie-animation {
+  width: 100%;
+  height: auto; /* Adjust height for responsiveness */
+  max-height: 500px;
+}
+
+.btn-social {
+  background-color: #3b71ca;
+  border: 1px solid #ddd;
+}
+.p-5 {
+  background: none;
+}
+.btn-social:hover {
+  background-color: #e0e0e0;
+}
+
+.divider {
+  width: 100%;
+  overflow: hidden; /* Ensure it doesn't cause overflow */
+  text-align: center;
+  margin-left: 90px;
+}
+
+.divider p {
+  display: inline-block; /* Ensure the text doesn't stretch the divider */
+  margin: 0;
+  padding: 0 10px; /* Add some padding around the text */
+  /* Match the background to the card */
+}
+
+.shadow-5 {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.text-center a {
+  text-decoration: none;
+  color: #ff5252;
+}
+
+.text-center a:hover {
+  color: #ff1744;
+}
+
+/* Center the MDBContainer on small screens */
+@media screen and (max-width: 768px) {
+  .h-custom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; /* Ensure full height for vertical centering */
+    padding: 2rem 1rem;
+  }
+
+  .lottie-animation {
+    height: 300px; /* Adjust height for smaller screens */
+  }
+
+  .btn-social {
+    font-size: 0.75rem; /* Slightly smaller buttons */
+  }
+
+  .shadow-5 {
+    box-shadow: none; /* Remove shadow for simplicity on smaller screens */
+  }
+
+  .d-flex {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center align elements */
+  }
+  .d-flex.justify-content-center {
+    flex-direction: row;
+  }
+
+  .form-input {
+    width: 100%; /* Full width inputs on smaller screens */
+  }
+
+  .d-flex.justify-content-between {
+    flex-direction: column; /* Stack "Remember me" and "Forgot password?" vertically */
+    align-items: center; /* Center align elements */
+  }
+
+  .d-flex.justify-content-between a {
+    margin-top: 1rem; /* Add margin to separate elements */
+  }
+
+  .d-flex.flex-column.align-items-center.justify-content-center.mb-4 p {
+    text-align: center;
+  }
+
+  .btn-social {
+    margin-bottom: 0.5rem; /* Add margin for better spacing */
+  }
+}
+@media screen and (max-width: 540px) {
+  .p-3.my-5.h-custom {
+    height: 120vh;
+  }
+  .divider {
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 480px) {
+  .p-3.my-5.h-custom {
+    height: 90vh;
+  }
+  .divider {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .divider {
+    margin-left: 0;
+  }
+  .p-3.my-5.h-custom {
+    height: 110vh;
+  }
+  .lottie-animation {
+    height: 200px; /* Adjust height for the smallest screens */
+  }
+
+  .btn-social {
+    font-size: 0.75rem; /* Slightly smaller buttons */
+  }
+
+  .form-input {
+    width: 100%; /* Full width inputs on smaller screens */
+  }
+  .d-flex.justify-content-center {
+    flex-direction: row;
+  }
+  .d-flex.justify-content-between {
+    flex-direction: column; /* Stack "Remember me" and "Forgot password?" vertically */
+    align-items: center; /* Center align elements */
+  }
+
+  .d-flex.justify-content-between a {
+    margin-top: 1rem; /* Add margin to separate elements */
+  }
+
+  .d-flex.flex-column.align-items-center.justify-content-center.mb-4 p {
+    text-align: center;
+  }
+
+  .btn-social {
+    margin-bottom: 0.5rem; /* Add margin for better spacing */
+  }
+}
