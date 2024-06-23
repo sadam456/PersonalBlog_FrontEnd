@@ -175,7 +175,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
-.items-intrest-container {
+.items-interest-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
@@ -224,7 +224,7 @@
 }
 
 .favtopics,
-.intrests {
+.interests {
   background-color: none;
   padding: 20px;
   border-radius: 8px;
@@ -338,7 +338,7 @@
   }
 
   .favtopics,
-  .intrests {
+  .interests {
     width: 100%;
     margin-bottom: 20px;
   }
