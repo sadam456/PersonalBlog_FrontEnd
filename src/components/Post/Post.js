@@ -103,7 +103,7 @@ function Post({ post }) {
           </TwitterShareButton>
         </div>
       </div>
-      <Link to={`/post/${post.id}`}>
+      <Link to={`/blog/${post.id}`}>
         <div className="postInfo">
           <div className="postCatg">{rendercategories}</div>
           <span className="postTitle">{title}</span>
