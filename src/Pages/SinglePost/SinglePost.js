@@ -51,21 +51,17 @@ function SinglePost() {
     fetchPost(id);
   }, [id]);
 
-  const handleDeletePost = (id) => {
-    const postId = id;
-    async function deletePost() {
-      try {
-        await axios.delete(
-          `https://personalblog-backend.onrender.com/blog/${postId}`
-        );
-        console.log("Delete successful");
-        navigate("/");
-        window.location.reload();
-      } catch (error) {
-        console.error("Error deleting post:", error);
-      }
+  const handleDeletePost = async (postId) => {
+    try {
+      await axios.delete(
+        `https://personalblog-backend.onrender.com/blog/${postId}`
+      );
+      console.log("Delete successful");
+      navigate("/");
+      window.location.reload();
+    } catch (error) {
+      console.error("Error deleting post:", error);
     }
-    deletePost();
   };
 
   return (
