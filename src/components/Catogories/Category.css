@@ -1,0 +1,136 @@
+/* CategorySelector.css */
+
+.category-selector {
+  font-family: "Roboto", sans-serif;
+  max-width: 300px;
+  margin: 0 auto;
+  margin-left: 10%;
+  color: black;
+}
+
+.category-selector h2 {
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: "Roboto", sans-serif;
+}
+
+.category-selector input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 1rem;
+  background: none;
+  outline: none;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown .options {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #141619;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown .option {
+  padding: 0.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+.dropdown .option:hover {
+  background-color: gray;
+}
+
+.selected-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.selected-category {
+  color: #333;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+}
+
+.selected-category button {
+  margin-left: 0.5rem;
+  background-color: transparent;
+  border: none;
+  color: black;
+  font-size: 1rem;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.selected-category button:hover {
+  color: #333;
+}
+.category-input::placeholder {
+  color: black; /* Replace with your desired color */
+}
+
+.category-input::-webkit-input-placeholder {
+  color: black;
+}
+.category-input::-moz-placeholder {
+  color: black;
+}
+.category-input:-ms-input-placeholder {
+  color: black;
+}
+.category-input:-moz-placeholder {
+  color: black;
+}
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .category-selector {
+    margin-left: 3%;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-selector {
+    margin-left: 3%;
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-selector {
+    margin-left: 3%;
+    max-width: 90%;
+  }
+
+  .category-selector h2 {
+    font-size: 0.875rem;
+  }
+
+  .category-selector input {
+    font-size: 0.875rem;
+  }
+
+  .selected-category {
+    font-size: 0.875rem;
+    margin-bottom: 5px;
+  }
+}

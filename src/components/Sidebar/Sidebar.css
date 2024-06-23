@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code&family=Lora:wght@400;700&family=Merriweather:wght@400;700&family=Open+Sans:wght@400;700&family=Playfair+Display:wght@400;700&display=swap");
+
+.sidebar {
+  flex: 3;
+  margin-left: 10px;
+  margin-top: 18px;
+  padding: 15px;
+  border-radius: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f4f8;
+}
+.aboutme {
+  /* Specifies the box orientation */
+  font-family: "Varela Round", sans-serif; /* Font family */
+  font-size: 0.875rem; /* Font size */
+  color: #141619; /* Font color */
+  line-height: 1.5; /* Line height */
+  margin-top: 5px; /* Margin at the top */
+  overflow: hidden; /* Hides overflow content */
+  text-overflow: ellipsis; /* Ad*/
+  padding: 5px;
+  text-align: start;
+  text-align: justify;
+}
+.sidebarItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebarTitle {
+  margin: 10px;
+  padding: 5px;
+  width: 80%;
+  border-top: 1px solid #a7a4a4;
+  border-bottom: 1px solid #a7a4a4;
+  font-family: "Playfair Display", serif;
+  font-size: 12px;
+  color: #141619;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: center;
+}
+
+.sidebarItem > img {
+  margin-top: 15px;
+  max-width: 100%;
+  height: auto;
+}
+
+.sidebarItem > p {
+  padding: 30px;
+}
+
+.sidebarList {
+  list-style: none;
+  margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 50px;
+  row-gap: 10px;
+}
+
+.sidebarListItem {
+  position: relative;
+  font-family: "Fira Code", monospace;
+  cursor: pointer;
+  color: #141619;
+}
+
+.sidebarListItem:hover {
+  color: teal;
+}
+
+.sidebarSocial {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.sidebarIcon {
+  margin: 10px;
+  font-size: 20px;
+}
+
+/* Media Queries for Responsiveness */
+
+@media screen and (max-width: 1200px) {
+  .sidebar {
+    flex: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    flex: 1;
+    margin-left: 2px;
+  }
+  .sidebarList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 200px;
+    row-gap: 10px;
+  }
+
+  .sidebarItem > p {
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sidebar {
+    margin: 10px;
+  }
+  .sidebarList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 10px;
+  }
+
+  .sidebarTitle {
+    width: 90%;
+  }
+
+  .sidebarIcon {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,292 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code&family=Lora:wght@400;700&family=Merriweather:wght@400;700&family=Open+Sans:wght@400;700&family=Playfair+Display:wght@400;700&display=swap");
+
+.code-snippet {
+  font-family: "Fira Code", monospace;
+}
+
+.header {
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  z-index: 999;
+  padding: 0.25rem;
+  background-color: #3d52a0;
+}
+
+.mobile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.social_media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link-style {
+  position: relative;
+  text-decoration: none;
+  font-family: "Playfair Display", serif;
+  color: #ffffff;
+  margin: 0.5rem 1rem 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.link-style::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #adbbda;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.link-style:hover {
+  color: black;
+}
+.link-style:hover::after,
+.link-style:visited::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.s_icon {
+  font-size: 1.25rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  color: white;
+}
+
+.page_links {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.profile_search {
+  display: flex;
+  align-items: center;
+}
+
+.user_icon {
+  margin: 10px 0;
+  width: 35px; /* Adjust size as needed */
+  height: 35px; /* Adjust size as needed */
+  border-radius: 50%; /* Makes the image circular */
+  overflow: hidden;
+  border: 2px solid #ddd; /* Optional: Add a border */
+  background-color: #f0f0f0;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+
+.profileimg {
+  margin-right: 5px;
+  width: 35px; /* Adjust size as needed */
+  height: 35px; /* Adjust size as needed */
+  border-radius: 50%; /* Makes the image circular */
+  overflow: hidden;
+  border: 2px solid #ddd; /* Optional: Add a border */
+  background-color: #f0f0f0;
+}
+
+.form_search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchInput {
+  height: 2rem;
+  width: 100%;
+  max-width: 200px;
+  border-radius: 10px;
+  border: 1px solid tan;
+  outline: 0;
+  padding: 0 0.5rem;
+}
+
+.search_icon {
+  margin-left: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: black;
+}
+
+.icons {
+  display: none;
+}
+.desktop-social {
+  display: flex;
+}
+
+.mobile-social {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: fixed;
+    top: 47px;
+    left: 0px;
+    width: 300px;
+    height: 100vh;
+    background-color: #2a3239;
+    box-shadow: 0 40px 60 px rgba(0, 0, 0, 0.1);
+    padding: 20px 0 0 10px;
+    transition: left 0.3s ease;
+  }
+
+  .list.open {
+    left: -300px;
+  }
+
+  .social_media {
+    margin-left: 15vw;
+  }
+  .desktop-social {
+    display: none;
+  }
+
+  .mobile-social {
+    display: flex;
+    margin-top: 1.5rem;
+    margin-left: 3rem;
+  }
+
+  /* .list {
+    padding: 20px 0 0 10px;
+  } */
+
+  .mobile-social .s_icon {
+    margin: 0 0.5rem;
+  }
+
+  .page_links {
+    position: absolute; /* Change from relative to absolute */
+    width: 100%;
+    top: 100%; /* Align directly underneath the mobile-header */
+    left: 0; /* Align with the left edge of the mobile-header */
+  }
+  .profileimg {
+    margin-right: 5px;
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+    border-radius: 50%; /* Makes the image circular */
+    border: 1px solid #ddd; /* Optional: Add a border */
+  }
+
+  .link-style {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+    color: white;
+    text-align: left;
+    padding: 0.5rem;
+    border-bottom: 1px solid;
+  }
+  .icons {
+    display: inline-block; /* Show icons when menu is open */
+    margin-right: 20px; /* Hide icons by default */
+  }
+
+  .list.open .icons {
+    display: none;
+  }
+
+  .link-style:last-child {
+    border-bottom: none;
+  }
+
+  .link-style:hover {
+    background-color: #e8e8e8;
+  }
+
+  .link-style::after {
+    display: none;
+  }
+
+  .s_icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .user_icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .searchInput {
+    max-width: 120px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .menu-icon {
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .profileimg {
+    margin-right: 5px;
+    width: 30px; /* Adjust size as needed */
+    height: 30px; /* Adjust size as needed */
+    border-radius: 50%; /* Makes the image circular */
+    border: 1px solid #ddd; /* Optional: Add a border */
+  }
+  .s_icon {
+    font-size: 1rem;
+    margin-right: 0.25rem;
+  }
+  .user_icon {
+    font-size: 1.25rem;
+    margin-right: 0.5rem;
+  }
+
+  .social_media {
+    margin-left: 0.5vw;
+  }
+  .list {
+    top: 42px;
+    width: 200px;
+  }
+  .mobile-social {
+    flex-wrap: wrap;
+  }
+
+  .mobile-social .s_icon {
+    margin: 0.5rem;
+  }
+}

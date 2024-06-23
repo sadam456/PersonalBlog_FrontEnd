@@ -1,0 +1,219 @@
+.write {
+  padding-top: 40px;
+  background-color: #fafafa;
+  min-height: 105vh;
+}
+
+.writeForm {
+  position: relative;
+}
+
+.writeFormGroup {
+  margin-left: 10%;
+  display: flex;
+  align-items: center;
+}
+
+.writeTextarea {
+  width: 90%;
+  margin-left: 10%;
+}
+
+.writeIcon {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: black;
+  cursor: pointer;
+}
+
+.writeInput {
+  font-size: 30px;
+  border: none;
+  padding: 20px;
+  width: 70vw;
+}
+.writeInput::placeholder {
+  color: black; /* Replace with your desired color */
+}
+
+.writeInput::-webkit-input-placeholder {
+  color: black;
+}
+.writeInput::-moz-placeholder {
+  color: black;
+}
+.writeInput:-ms-input-placeholder {
+  color: black;
+}
+.writeInput:-moz-placeholder {
+  color: black;
+}
+.writeInput:focus {
+  outline: none;
+}
+
+.writeTextarea {
+  font-size: 20px;
+  width: 85%;
+  margin-top: 10px;
+}
+
+.writeSubmit {
+  position: absolute;
+  padding: 5px;
+  top: 20px;
+  right: 5%;
+  background-color: teal;
+  padding: 10px;
+  border: none;
+  width: 100px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+}
+
+.writeSubmit:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.writeImg {
+  margin-left: 10%;
+  width: 85vw;
+  height: 350px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.imageholder {
+  margin-left: 10%;
+  width: 80vw;
+  height: 350px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.login-message {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  color: red;
+}
+
+.preview {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 5%;
+}
+
+.previewHeader {
+  font-size: 18px;
+}
+
+.previewData {
+  margin-top: 10px;
+  min-height: 100px;
+  width: 90%;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .writeFormGroup,
+  .writeTextarea,
+  .writeImg,
+  .imageholder,
+  .previewData {
+    width: 95%;
+    margin-left: 3%;
+  }
+
+  .writeSubmit {
+    right: 5%;
+  }
+}
+
+@media (max-width: 768px) {
+  .writeFormGroup,
+  .writeTextarea,
+  .writeImg,
+  .imageholder,
+  .previewData {
+    width: 96%;
+    margin-left: 2%;
+  }
+
+  .writeInput {
+    font-size: 24px;
+    padding: 10px;
+    width: 98%;
+  }
+
+  .writeImg,
+  .imageholder {
+    height: 200px;
+  }
+
+  .writeTextarea {
+    font-size: 18px;
+  }
+
+  .writeSubmit {
+    width: 80px;
+    font-size: 14px;
+  }
+
+  .preview {
+    margin-top: 50px;
+    width: 98%;
+    padding-bottom: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .writeFormGroup,
+  .writeTextarea,
+  .writeImg,
+  .imageholder,
+  .previewData {
+    width: 95%;
+    margin-left: 2%;
+  }
+
+  .writeInput {
+    font-size: 20px;
+  }
+
+  .writeTextarea {
+    font-size: 12px;
+    width: 95%;
+  }
+  .writeSubmit {
+    top: 10px;
+    padding: 5px;
+    width: fit-content;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+
+  .writeImg {
+    width: 95%;
+    height: 170px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .preview {
+    margin-top: 50px;
+    width: 98%;
+    padding-bottom: 5px;
+  }
+}

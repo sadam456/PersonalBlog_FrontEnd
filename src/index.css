@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+appstyle {
+  background-color: linear-gradient(
+    to bottom,
+    #3d52a0,
+    #7091e6,
+    #8697c4,
+    #ede8f5
+  );
+}

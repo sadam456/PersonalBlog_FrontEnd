@@ -1,0 +1,112 @@
+.lottie-animation {
+  width: 100%;
+  height: 500px;
+}
+.chkbox {
+  width: 100%;
+  right: 100px;
+}
+.wide-btn {
+  width: 110%;
+  right: 100px;
+}
+.btn-social {
+  background-color: #3b71ca;
+  border: 1px solid #ddd;
+}
+
+.btn-social:hover {
+  background-color: #e0e0e0;
+}
+
+.shadow-5 {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.text-center a {
+  text-decoration: none;
+  color: white;
+}
+
+@media screen and (max-width: 1024px) {
+  .chkbox {
+    width: 100%;
+    right: 100px;
+  }
+  .wide-btn {
+    width: 100%;
+    right: 50px;
+  }
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .h-custom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+
+  .lottie-animation {
+    height: 300px;
+  }
+  .chkbox {
+    width: 200px;
+  }
+  .wide-btn {
+    width: 100%;
+    left: 0;
+  }
+
+  .btn-social {
+    font-size: 0.75rem;
+  }
+
+  .shadow-5 {
+    box-shadow: none;
+  }
+
+  .d-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-input {
+    width: 100%;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .h-custom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0.5rem;
+    height: 260vw;
+  }
+  .wide-btn {
+    width: 100%;
+    left: 0;
+  }
+
+  .lottie-animation {
+    height: 200px;
+  }
+
+  .btn-social {
+    font-size: 0.75rem;
+  }
+
+  .form-input {
+    width: 100%;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+}

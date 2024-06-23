@@ -1,0 +1,105 @@
+/* AgreementModal.css */
+.aggrementmodal {
+  display: flex;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.aggrementmodal-content {
+  background-color: #f9f9f9;
+  margin: auto;
+  padding: 30px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 800px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.modal-header {
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.agreement-text {
+  flex-grow: 1;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+  padding: 25px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  line-height: 1.6;
+}
+
+.aggrementh2 {
+  color: #2c3e50;
+  margin-top: 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.aggrementh3 {
+  color: #3498db;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-size: 22px;
+  font-weight: 500;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 8px;
+}
+
+p {
+  color: #34495e;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.aggrementclose {
+  background-color: #3498db;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  align-self: flex-end;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.aggrementclose:hover {
+  background-color: #2980b9;
+}
+
+@media screen and (max-width: 600px) {
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,453 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap");
+
+/* Ensure the container takes full height */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.about-me {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  background: none;
+  padding: 10px;
+}
+.about-me-header {
+  text-align: center;
+  margin-bottom: 20px;
+  color: black;
+}
+.aboutmeh1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #3d52a0;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.profile-photo {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+
+.bio {
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: center;
+  color: black;
+}
+
+.skills {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 220px;
+  height: 70px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  color: black;
+}
+
+.skill:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.skill-icon {
+  font-size: 2em;
+  margin-right: 10px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.skill-name {
+  font-size: 1.2em;
+  transition: opacity 0.5s ease-in-out;
+  color: black;
+}
+
+.skill:hover .skill-icon {
+  transform: rotate(360deg);
+}
+
+.skill:hover .skill-name {
+  opacity: 0.8;
+}
+.item-fav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 70px;
+  text-align: center;
+  background-color: lightblue;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  color: black;
+  font-weight: bold;
+}
+
+.bottom-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+.favposts {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / 2;
+  background-color: none;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  height: 550px;
+  max-height: 1609px; /* Set a maximum height for the favposts div */
+}
+.items-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+.topics-interests-social-container {
+  grid-column: 2 / 3; /* Span the second column */
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: space-between; /* Align items horizontally */
+}
+
+.topics-interests-container {
+  flex: 1; /* Allows the topics-interests container to grow and take available space */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Adjust the spacing between favorite topics and interests */
+}
+
+.social-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: none;
+  padding: 40px;
+  max-height: 70vh;
+  height: max-content;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  /* Prevents the social-media div from shrinking */
+}
+.items-fav-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.items-intrest-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.lottie-player {
+  width: 60%;
+}
+.socialTitle {
+  margin: 10px;
+  padding: 5px;
+  width: 100%;
+  border-top: 1px solid #a7a4a4;
+  border-bottom: 1px solid #a7a4a4;
+  font-family: "Playfair Display", serif;
+  font-size: 12px;
+  color: #141619;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: center;
+}
+.social {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sidebarIcon,
+.socialIcon {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.sidebarIcon span,
+.socialIcon span {
+  display: flex;
+}
+
+.sidebarIcon p,
+.socialIcon p {
+  margin-left: 15px;
+  line-height: 1;
+}
+
+.favtopics,
+.intrests {
+  background-color: none;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+.headerh2 {
+  font-weight: bold;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #3d52a0;
+  border-bottom: 2px solid #7091e6;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  position: sticky;
+  top: 0;
+  background-color: inherit;
+  z-index: 1;
+}
+
+.addfavdiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* This aligns the content vertically */
+  height: 100%;
+}
+.add-favorite-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 1rem;
+  font-family: "Josefin Sans", sans-serif;
+  color: white;
+  background-color: #3d52a0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  text-align: center;
+  outline: none;
+}
+
+.add-favorite-button:hover {
+  background-color: #7091e6;
+  transform: translateY(-2px);
+}
+
+.add-favorite-button:active {
+  background-color: #2b3a6e;
+  transform: translateY(1px);
+}
+
+.add-favorite-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(61, 82, 160, 0.5);
+}
+
+@media (max-width: 768px) {
+  .about-me {
+    padding: 15px;
+  }
+
+  .bio {
+    font-size: 1em;
+  }
+
+  .skills {
+    gap: 15px;
+  }
+
+  .skill {
+    width: 190px;
+    height: 80px;
+  }
+
+  .skill-icon {
+    font-size: 1.5em;
+    margin-right: 5px;
+  }
+
+  .skill-name {
+    font-size: 1em;
+    margin-right: 5px;
+  }
+
+  .bottom-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .items-container {
+    grid-template-columns: 1fr; /* Changed to 1 column for smaller screens */
+  }
+
+  .favposts {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .topics-interests-social-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .topics-interests-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .favtopics,
+  .intrests {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .social-media {
+    width: 100%;
+  }
+
+  .social {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .items-fav-container,
+  .items-intrest-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .item-fav {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-me {
+    padding: 10px;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .profile-photo {
+    width: 120px;
+    height: 120px;
+    margin-left: 25px;
+  }
+  .lottie-player {
+    width: 80%;
+  }
+  .bio {
+    font-size: 0.9em;
+    text-align: justify;
+  }
+
+  .skills {
+    gap: 10px;
+  }
+
+  .skill {
+    width: 150px;
+    height: 70px;
+  }
+
+  .skill-icon {
+    font-size: 1.2em;
+    margin-right: 5px;
+  }
+
+  .items-container {
+    grid-template-columns: 1fr; /* Ensure 1 column for very small screens */
+    gap: 10px; /* Reduce gap for smaller screens */
+  }
+
+  .favposts {
+    height: auto;
+    max-height: 550px;
+    overflow-y: auto;
+  }
+
+  .topics-interests-social-container {
+    flex-direction: column; /* Stack the container vertically */
+  }
+
+  .topics-interests-container {
+    flex-direction: column; /* Stack the topics and interests vertically */
+    gap: 10px; /* Add some spacing between them */
+    margin-bottom: 0px;
+  }
+  .items-fav-container,
+  .items-intrest-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 5px;
+  }
+  .social-media {
+    margin-top: 0px;
+  }
+  .social {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .headerh2 {
+    font-size: 16px;
+    font-weight: 800;
+    text-decoration: underline;
+  }
+
+  .skill-name {
+    font-size: 0.7em;
+    font-weight: 800;
+  }
+
+  .headerh2 {
+    font-size: 16px;
+    font-weight: 800;
+    text-decoration: underline;
+  }
+}

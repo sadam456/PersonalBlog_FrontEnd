@@ -1,0 +1,89 @@
+.singlePost {
+  flex: 9;
+  position: relative;
+  min-height: 100vh;
+  background-color: #f0f8ff;
+}
+
+.singlePostWrapper {
+  padding: 20px;
+  padding-right: 0;
+}
+
+.singlePostImg {
+  width: 98%;
+  height: 400px;
+  border-radius: 5px;
+  object-fit: scale-down;
+}
+
+.singlePostTitle {
+  text-align: center;
+  margin: 10px;
+  font-family: "Lora", serif;
+  font-size: 28px;
+}
+
+.singlePostEdit {
+  display: flex;
+  float: right;
+  font-size: 16px;
+  margin-right: 20px;
+}
+.singlePostEditIcon {
+  margin-left: 10px;
+  cursor: pointer;
+  color: black;
+}
+.singlePostShareIcon {
+  margin-left: 10px;
+  cursor: pointer;
+  color: blue;
+}
+
+.singlePostDeleteIcon {
+  margin-left: 10px;
+  cursor: pointer;
+  color: tomato;
+}
+
+.singlePostInfo {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  align-items: center;
+  font-family: "Varela Round", sans-serif;
+  color: #b39656;
+}
+.singlePostDate {
+  margin-right: 25px;
+}
+.singlePostDesc {
+  width: 98%;
+  color: #666;
+  font-size: 18px;
+  line-height: 25px;
+}
+
+.singlePostDesc::first-letter {
+  margin-left: 20px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 480px) {
+  .singlePostEdit {
+    font-size: 12px;
+    margin-right: 2.5px;
+  }
+  .singlePostEditIcon {
+    margin-left: 2.5px;
+  }
+  .singlePostShareIcon {
+    margin-left: 2.5px;
+  }
+  .singlePostDeleteIcon {
+    margin-left: 2.5px;
+  }
+}

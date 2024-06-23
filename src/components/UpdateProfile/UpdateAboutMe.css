@@ -1,0 +1,87 @@
+.update-abotme {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.update-fav-int-soci {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.selected-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+.selected-topic {
+  color: #333;
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.selected-topic button {
+  margin-left: 0.5rem;
+  background-color: transparent;
+  border: none;
+  color: black;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.update-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.update-button:hover {
+  background-color: #0056b3;
+}
+
+.selected-topic button:hover {
+  color: #333;
+}
+.update-fav-topics {
+  display: flex;
+  flex-direction: column;
+}
+.update-fav-intrests {
+  margin-top: 10px;
+}
+.update-input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 5px;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 1rem;
+  background: none;
+  outline: none;
+}
+.delete-icon {
+  font-size: 20px;
+}
+.Update-soci-links {
+  margin-top: 20px;
+}
+.update-soci {
+  width: 100%;
+  padding: 0.5rem;
+  border-bottom: 1px solid black;
+  border-radius: 4px;
+  font-size: 1rem;
+  background: none;
+  outline: none;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,144 @@
+/* Font Imports */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap");
+
+/* Base Styles for Headers */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", serif;
+  color: #333;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+/* Header 1 */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #3d52a0;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Header 2 */
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #3d52a0;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+/* Header 3 */
+h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.ppdate {
+  font-size: 1rem;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+/* Base Styles for Lists */
+ul {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+p em,
+p strong,
+ul em,
+ul strong,
+span em,
+span strong {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  color: #3d52a0; /* Complementary color */
+}
+
+.privacy-policy-container {
+  max-width: 800px;
+  margin-left: 80px;
+  font-family: Arial, sans-serif;
+}
+
+.privacy-policy-container h1,
+.privacy-policy-container h2,
+.privacy-policy-container h3 {
+  color: black;
+}
+
+.privacy-policy-container p,
+.privacy-policy-container ul {
+  color: black;
+  line-height: 1.6;
+  text-align: start;
+}
+
+.privacy-policy-container ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+@media (max-width: 600px) {
+  .privacy-policy-container {
+    padding: 10px;
+  }
+  p,
+  ul,
+  span {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .privacy-policy-container {
+    margin-left: 0px;
+  }
+
+  p,
+  ul,
+  span {
+    font-size: 0.8rem;
+  }
+  /* .privacy-policy-container {
+    padding: 5px;
+  }
+  .privacy-policy-container h1,
+  .privacy-policy-container h2,
+  .privacy-policy-container h3 {
+    font-size: 15px;
+    font-weight: 800;
+  }
+  .privacy-policy-container p,
+  .privacy-policy-container ul {
+    font-size: 12px;
+  } */
+}

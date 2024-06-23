@@ -1,0 +1,52 @@
+.form_search {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1001; /* Ensure it is above other content */
+}
+
+.searchBar {
+  margin-top: 5px;
+  margin-bottom: 2px;
+}
+
+.search_results {
+  position: absolute;
+  top: 35px; /* Adjusted to ensure it appears below the input */
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  padding: 0; /* Remove default padding */
+}
+
+.search_results li {
+  padding: 8px;
+  cursor: pointer;
+  list-style: none;
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+  border-bottom: 1px solid #ddd; /* Add bottom border */
+}
+
+.search_results li:last-child {
+  border-bottom: none; /* Remove border for last item */
+}
+
+.search_results li:hover {
+  background-color: #f0f0f0;
+}
+
+@media screen and (max-width: 480px) {
+  span.ant-input-affix-wrapper.css-dev-only-do-not-override-1fumvat.ant-input-outlined {
+    height: 25px;
+  }
+  button.ant-btn.css-dev-only-do-not-override-1fumvat.ant-btn-default.ant-btn-icon-only.ant-input-search-button {
+    height: 25px;
+    margin-top: -2px;
+  }
+}

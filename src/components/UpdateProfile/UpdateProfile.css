@@ -1,0 +1,185 @@
+.profile {
+  display: flex;
+  color: #141619;
+  min-height: 100vh;
+}
+h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #555;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+.profileWrapper {
+  flex: 9;
+  padding: 20px;
+}
+.custom-textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border-bottom: 1px solid black;
+  border-radius: 4px;
+  resize: vertical;
+  font-size: 16px;
+  background: none;
+}
+
+.profileTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #141619;
+}
+
+.profileUpdateTitle {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #141619;
+}
+
+.profileDeleteTitle {
+  color: red;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.profileForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.profilePicture {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.profilePicture > img {
+  margin: 10px 0;
+  width: 50px; /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+  border-radius: 50%; /* Makes the image circular */
+  overflow: hidden;
+  border: 2px solid #ddd; /* Optional: Add a border */
+  background-color: #f0f0f0;
+}
+
+.profileIcon {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.profileForm > label {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.profileForm > input {
+  color: #141619;
+  margin: 10px 0;
+  height: 30px;
+  border: none;
+  outline: 0;
+  border-bottom: 1px solid #141619;
+  background: none;
+}
+
+.profileSubmit {
+  width: 150px;
+  align-self: center;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: teal;
+  padding: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.profilesidebar {
+  margin-top: 10px;
+}
+
+.custom-placeholder::placeholder {
+  color: black; /* Replace with your desired color */
+}
+
+.custom-placeholder::-webkit-input-placeholder {
+  color: black;
+}
+.custom-placeholder::-moz-placeholder {
+  color: black;
+}
+.custom-placeholder:-ms-input-placeholder {
+  color: black;
+}
+.custom-placeholder:-moz-placeholder {
+  color: black;
+}
+@media (max-width: 768px) {
+  .profileWrapper {
+    padding: 10px;
+  }
+
+  .profileTitle {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .profileUpdateTitle {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .profileDeleteTitle {
+    margin-top: 10px;
+  }
+
+  .profileForm > label {
+    font-size: 16px;
+  }
+
+  .profileSubmit {
+    width: 120px;
+  }
+  .custom-textarea {
+    height: 150px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profileWrapper {
+    padding: 0px;
+  }
+  /* .profile {
+    margin-right: 100px;
+  }
+  .profileUpdateTitle {
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .profileDeleteTitle {
+    font-size: 13px;
+  }
+
+  .profileForm > label {
+    font-size: 20px;
+  }
+
+  .profileSubmit {
+    width: 100px;
+    font-size: 14px;
+  }
+  .profilePicture > img {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+  } */
+}

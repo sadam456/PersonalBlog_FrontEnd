@@ -1,0 +1,4 @@
+/* CSS to add a blurry effect to the backdrop */
+.modal-backdrop.show {
+  backdrop-filter: blur(10px); /* Adjust blur radius as needed */
+}

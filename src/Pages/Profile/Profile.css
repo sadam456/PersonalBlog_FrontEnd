@@ -1,0 +1,51 @@
+/* Container for the whole tab component */
+.tab-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Style for the Tabs component */
+.vertical-tabs {
+  min-width: 200px;
+  border-right: 1px solid black;
+}
+
+/* Style for each Tab panel */
+.tab-panel {
+  flex-grow: 1;
+  padding: 20px;
+  background: none;
+  border-radius: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tab-container {
+    flex-direction: column;
+  }
+
+  .vertical-tabs {
+    border-right: none;
+    border-bottom: 1px solid black;
+    width: 100%;
+    margin-bottom: 20px;
+    min-width: 150px;
+  }
+
+  .tab-panel {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tab-container {
+    padding: 10px;
+  }
+
+  .tab-panel {
+    padding: 5px;
+  }
+}
