@@ -50,10 +50,11 @@ function SinglePost() {
   }, [id]);
 
   const handleDeletePost = (id) => {
+    const postId = id;
     async function deletePost() {
       try {
         await axios.delete(
-          `https://personalblog-backend.onrender.com/blog/${id}`
+          `https://personalblog-backend.onrender.com/blog/${postId}`
         );
         console.log("Delete successful");
         navigate("/");
