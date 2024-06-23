@@ -28,7 +28,7 @@ function App() {
     try {
       const user = await login(email, password);
       console.log("Logged in user ID: ", user.uid);
-      navigate("/profile"); // Redirect to dashboard or any other page
+      navigate("/"); // Redirect to dashboard or any other page
     } catch (error) {
       alert(error.message);
     }
@@ -38,7 +38,7 @@ function App() {
     try {
       const user = await socialLogin(provider);
       console.log("Logged in user ID: ", user.uid);
-      navigate("/profile");
+      navigate("/");
     } catch (error) {
       alert(error.message);
     }
