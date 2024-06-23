@@ -37,7 +37,7 @@ function App() {
             }
           />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/post/:id" element={<SinglePost />} />
+          <Route path="/post/:id" element={ <ProviderUser><SinglePost /></ProviderUser> } />
           <Route path="/create" element={<Write />} />
           <Route path="/edit/:id" element={<Edit />} />
           <Route
