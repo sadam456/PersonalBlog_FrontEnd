@@ -71,6 +71,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     await signOut(auth);
     setCurrentUser(null);
+    window.location.reload();
   };
 
   const value = {
