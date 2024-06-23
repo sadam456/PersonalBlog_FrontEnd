@@ -11,6 +11,7 @@ import "react-quill/dist/quill.snow.css";
 import convertBinaryToBase64 from "../../components/BinarytoImage/convertBinaryToBase64";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import UserContext from "../../context/UserDetails";
 
 const initial = {
   id: "",
@@ -28,6 +29,7 @@ function SinglePost() {
   const { title, description, date, imageData } = post;
   const imageSource = imageData ? convertBinaryToBase64(imageData) : null;
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { userProfile } = useContext(UserContext);
   const shareUrl = `https://personalblog-backend.onrender.com/blog/${id}`;
 
   const navigate = useNavigate();
@@ -94,7 +96,7 @@ function SinglePost() {
           </h1>
           <div className="singlePostInfo">
             <span className="singlePostAuthor">
-              Author: <b>Rohith</b>
+              Author: <b>{userProfile.firstName}</b>
             </span>
             <span className="singlePostDate">{date}</span>
           </div>
