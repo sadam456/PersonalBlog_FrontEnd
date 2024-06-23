@@ -28,14 +28,14 @@ function SinglePost() {
   const { title, description, date, imageData } = post;
   const imageSource = imageData ? convertBinaryToBase64(imageData) : null;
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const shareUrl = `https://main--nimble-rugelach-59df20.netlify.app/blog/${id}`;
+  const shareUrl = `https://personalblog-backend.onrender.com/blog/${id}`;
 
   const navigate = useNavigate();
 
   const fetchPost = async (id) => {
     try {
       const response = await axios.get(
-        `https://main--nimble-rugelach-59df20.netlify.app/blog/${id}`
+        `https://personalblog-backend.onrender.com/blog/${id}`
       );
       setPost(response.data);
     } catch (error) {
@@ -53,7 +53,7 @@ function SinglePost() {
     async function deletePost() {
       try {
         await axios.delete(
-          `https://main--nimble-rugelach-59df20.netlify.app/blog/${id}`
+          `https://personalblog-backend.onrender.com/blog/${id}`
         );
         console.log("Delete successful");
         navigate("/");
