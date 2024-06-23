@@ -95,7 +95,7 @@ function ProviderUser({ children }) {
     const getUserDetails = async () => {
       if (currentUser) {
         const response = await axios.get(
-          `http://localhost:8080/api/users/${currentUser.uid}`
+          `https://main--nimble-rugelach-59df20.netlify.app/api/users/${currentUser.uid}`
         );
         setUserProfile(response.data);
       }
@@ -128,11 +128,15 @@ function ProviderUser({ children }) {
       reader.onloadend = () => {
         userProfile.profilePic = reader.result.split(",")[1]; // Remove the data:image/... prefix
         axios
-          .put("http://localhost:8080/api/users", updatedUserProfile, {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
+          .put(
+            "https://main--nimble-rugelach-59df20.netlify.app/api/users",
+            updatedUserProfile,
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          )
           .then((response) => {
             //console.log("Post successful:", response.data);
             navigate("/");
@@ -147,11 +151,15 @@ function ProviderUser({ children }) {
       userProfile.profilePic = profilePic;
 
       axios
-        .put("http://localhost:8080/api/users", updatedUserProfile, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
+        .put(
+          "https://main--nimble-rugelach-59df20.netlify.app/api/users",
+          updatedUserProfile,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
         .then((response) => {
           console.log("Post successful:", response.data);
           navigate("/");
@@ -162,11 +170,15 @@ function ProviderUser({ children }) {
     } else {
       // No file and no existing profilePic
       axios
-        .put("http://localhost:8080/api/users", updatedUserProfile, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
+        .put(
+          "https://main--nimble-rugelach-59df20.netlify.app/api/users",
+          updatedUserProfile,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
         .then((response) => {
           //console.log("Post successful:", response.data);
           navigate("/");
@@ -179,10 +191,13 @@ function ProviderUser({ children }) {
 
   const UpdatePassword = async (currentPassword, newPassword) => {
     try {
-      await axios.put("http://localhost:8080/user/updatepassword", {
-        currentPassword,
-        newPassword,
-      });
+      await axios.put(
+        "https://main--nimble-rugelach-59df20.netlify.app/user/updatepassword",
+        {
+          currentPassword,
+          newPassword,
+        }
+      );
       //console.log("Password update successful:", response.data);
       // Optionally, navigate or provide feedback to the user
     } catch (error) {
