@@ -91,13 +91,23 @@ function ProviderUser({ children }) {
     }
   };
 
-  useEffect(() => {
+   useEffect(() => {
     const getUserDetails = async () => {
       if (currentUser) {
-        const response = await axios.get(
-          `https://personalblog-backend.onrender.com/api/users/${currentUser.uid}`
-        );
-        setUserProfile(response.data);
+        try {
+          const response = await axios.get(
+            `https://personalblog-backend.onrender.com/api/users/${currentUser.uid}`
+          );
+          setUserProfile(response.data);
+          setFavtopic(response.data.topics || []);
+          setInterests(response.data.interests || []);
+          setSocialMediaLink(
+            response.data.socialMediaLinks || initial.socialMediaLinks
+          );
+          console.log(response.data);
+        } catch (error) {
+          console.error("Error fetching user details:", error);
+        }
       }
     };
 
