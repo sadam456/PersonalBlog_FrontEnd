@@ -89,9 +89,13 @@ function Write() {
     }
 
     axios
-      .post("http://localhost:8080/blogPost", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      })
+      .post(
+        "https://main--nimble-rugelach-59df20.netlify.app/blogPost",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      )
       .then((response) => {
         console.log("Post successful:", response.data);
         navigate("/");
