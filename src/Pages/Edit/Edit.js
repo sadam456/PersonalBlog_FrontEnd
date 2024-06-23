@@ -62,7 +62,7 @@ function Edit() {
   const fetchEditPost = useCallback(
     (id) => {
       axios
-        .get(`https://main--nimble-rugelach-59df20.netlify.app/blog/${id}`)
+        .get(`https://personalblog-backend.onrender.com/blog/${id}`)
         .then((response) => {
           setForm(response.data);
           setValue(response.data.description);
@@ -121,7 +121,7 @@ function Edit() {
 
         axios
           .put(
-            "https://main--nimble-rugelach-59df20.netlify.app/blog",
+            "https://personalblog-backend.onrender.com/blog",
             updatedForm,
             {
               headers: {
@@ -144,7 +144,7 @@ function Edit() {
 
       axios
         .put(
-          "https://main--nimble-rugelach-59df20.netlify.app/blog",
+          "https://personalblog-backend.onrender.com/blog",
           updatedForm,
           {
             headers: {
@@ -163,7 +163,7 @@ function Edit() {
       // No file and no existing imageData
       axios
         .put(
-          "https://main--nimble-rugelach-59df20.netlify.app/blog",
+          "https://personalblog-backend.onrender.com/blog",
           updatedForm,
           {
             headers: {
