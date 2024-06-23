@@ -28,7 +28,7 @@ function Post({ post }) {
       </span>
     );
   });
-  const shareUrl = `https://main--nimble-rugelach-59df20.netlify.app/blog/${post.id}`;
+  const shareUrl = `https://personalblog-backend.onrender.com/blog/${post.id}`;
 
   const [isFavorite, setIsFavorite] = useState(
     favoritePosts.some((favPost) => favPost.id === post.id)
