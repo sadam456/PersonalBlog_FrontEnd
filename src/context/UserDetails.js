@@ -104,7 +104,7 @@ function ProviderUser({ children }) {
           setSocialMediaLink(
             response.data.socialMediaLinks || initial.socialMediaLinks
           );
-          console.log(response.data);
+          //console.log(response.data);
         } catch (error) {
           console.error("Error fetching user details:", error);
         }
@@ -171,7 +171,7 @@ function ProviderUser({ children }) {
           }
         )
         .then((response) => {
-          console.log("Post successful:", response.data);
+         // console.log("Post successful:", response.data);
           navigate("/");
         })
         .catch((error) => {
