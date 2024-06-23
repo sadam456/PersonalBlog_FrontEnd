@@ -62,7 +62,7 @@ function Edit() {
   const fetchEditPost = useCallback(
     (id) => {
       axios
-        .get(`http://localhost:8080/blog/${id}`)
+        .get(`https://main--nimble-rugelach-59df20.netlify.app/blog/${id}`)
         .then((response) => {
           setForm(response.data);
           setValue(response.data.description);
@@ -120,11 +120,15 @@ function Edit() {
         updatedForm.imageData = reader.result.split(",")[1]; // Remove the data:image/... prefix
 
         axios
-          .put("http://localhost:8080/blog", updatedForm, {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
+          .put(
+            "https://main--nimble-rugelach-59df20.netlify.app/blog",
+            updatedForm,
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          )
           .then((response) => {
             console.log("Post successful:", response.data);
             navigate("/");
@@ -139,11 +143,15 @@ function Edit() {
       updatedForm.imageData = imageData;
 
       axios
-        .put("http://localhost:8080/blog", updatedForm, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
+        .put(
+          "https://main--nimble-rugelach-59df20.netlify.app/blog",
+          updatedForm,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
         .then((response) => {
           console.log("Post successful:", response.data);
           navigate("/");
@@ -154,11 +162,15 @@ function Edit() {
     } else {
       // No file and no existing imageData
       axios
-        .put("http://localhost:8080/blog", updatedForm, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
+        .put(
+          "https://main--nimble-rugelach-59df20.netlify.app/blog",
+          updatedForm,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
         .then((response) => {
           console.log("Post successful:", response.data);
           navigate("/");
