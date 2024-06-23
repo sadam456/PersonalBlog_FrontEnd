@@ -95,7 +95,7 @@ function ProviderUser({ children }) {
     const getUserDetails = async () => {
       if (currentUser) {
         const response = await axios.get(
-          `https://main--nimble-rugelach-59df20.netlify.app/api/users/${currentUser.uid}`
+          `https://personalblog-backend.onrender.com/api/users/${currentUser.uid}`
         );
         setUserProfile(response.data);
       }
@@ -129,7 +129,7 @@ function ProviderUser({ children }) {
         userProfile.profilePic = reader.result.split(",")[1]; // Remove the data:image/... prefix
         axios
           .put(
-            "https://main--nimble-rugelach-59df20.netlify.app/api/users",
+            "https://personalblog-backend.onrender.com/api/users",
             updatedUserProfile,
             {
               headers: {
@@ -152,7 +152,7 @@ function ProviderUser({ children }) {
 
       axios
         .put(
-          "https://main--nimble-rugelach-59df20.netlify.app/api/users",
+          "https://personalblog-backend.onrender.com/api/users",
           updatedUserProfile,
           {
             headers: {
@@ -171,7 +171,7 @@ function ProviderUser({ children }) {
       // No file and no existing profilePic
       axios
         .put(
-          "https://main--nimble-rugelach-59df20.netlify.app/api/users",
+          "https://personalblog-backend.onrender.com/api/users",
           updatedUserProfile,
           {
             headers: {
@@ -192,7 +192,7 @@ function ProviderUser({ children }) {
   const UpdatePassword = async (currentPassword, newPassword) => {
     try {
       await axios.put(
-        "https://main--nimble-rugelach-59df20.netlify.app/user/updatepassword",
+        "https://personalblog-backend.onrender.com/user/updatepassword",
         {
           currentPassword,
           newPassword,
