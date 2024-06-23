@@ -90,7 +90,7 @@ function Write() {
 
     axios
       .post(
-        "https://main--nimble-rugelach-59df20.netlify.app/blogPost",
+        "https://personalblog-backend.onrender.com/blogPost",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
