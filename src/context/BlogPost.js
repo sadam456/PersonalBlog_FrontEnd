@@ -16,7 +16,7 @@ function ProviderBlog({ children }) {
     }
     try {
       const response = await axios.get(
-        `https://main--nimble-rugelach-59df20.netlify.app/blog/user/${currentUser.uid}`
+        `https://personalblog-backend.onrender.com/blog/user/${currentUser.uid}`
       );
       return response.data;
     } catch (error) {
@@ -45,7 +45,7 @@ function ProviderBlog({ children }) {
 
   const handlePostsByCategory = async (category) => {
     const responce = await axios.get(
-      `https://main--nimble-rugelach-59df20.netlify.app/blog/category/${category}`,
+      `https://personalblog-backend.onrender.com/blog/category/${category}`,
       {
         params: {
           userId: currentUser.uid,
@@ -59,7 +59,7 @@ function ProviderBlog({ children }) {
   const addFavoritePost = async (post) => {
     try {
       const response = await axios.put(
-        "https://main--nimble-rugelach-59df20.netlify.app/blog/favorite",
+        "https://personalblog-backend.onrender.com/blog/favorite",
         null,
         {
           params: {
@@ -79,7 +79,7 @@ function ProviderBlog({ children }) {
   const removeFavoritePosts = async (postId) => {
     try {
       const response = await axios.put(
-        "https://main--nimble-rugelach-59df20.netlify.app/blog/favorite",
+        "https://personalblog-backend.onrender.com/blog/favorite",
         null,
         {
           params: {
