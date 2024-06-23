@@ -1,4 +1,3 @@
-// SimpleModal.jsx
 import React, { useState, useRef, useEffect } from "react";
 import "./Modal.css";
 import { MdDelete } from "react-icons/md";
