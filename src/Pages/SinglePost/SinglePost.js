@@ -58,7 +58,6 @@ function SinglePost() {
       );
       console.log("Delete successful");
       navigate("/");
-      window.location.reload();
     } catch (error) {
       console.error("Error deleting post:", error);
     }
@@ -87,7 +86,7 @@ function SinglePost() {
                 postUrl={shareUrl}
                 postTitle={title}
               />
-              <Modal onDelete={() => handleDeletePost(post.id)} />
+              <Modal onDelete={handleDeletePost} postId={post.id} />
             </div>
           </h1>
           <div className="singlePostInfo">
