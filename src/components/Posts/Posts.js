@@ -3,46 +3,44 @@ import "./Posts.css";
 import Post from "../Post/Post";
 import BlogContext from "../../context/BlogPost";
 import ErrorModal from "../ErrorModal/ErrorModal";
-import Backdrop from "@mui/material/Backdrop";
-import CircularProgress from "@mui/material/CircularProgress";
-import animationdata from "../../assets/Animation.json";
 import Lottie from "react-lottie-player";
+import animationdata from "../../assets/Animation.json";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import Stack from "@mui/material/Stack";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Select, MenuItem, FormControl, InputLabel } from "@mui/material";
+import SimpleLoader from "../SimpleLoader/SimpleLoader";
+import LoginPrompt from "../LoginPrompt/LoginPrompt";
+import { useAuth } from "../../context/AuthContext";
 
 function Posts() {
-  const { data, filteron, handleFilter, handleBlogs } = useContext(BlogContext);
-  const [loadingTimeout, setLoadingTimeout] = useState(false);
+  const { data, filteron, loadingStatus, handleFilter, handleBlogs } =
+    useContext(BlogContext);
+  const { currentUser } = useAuth();
+
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState({ title: "", body: "" });
   const [sortOption, setSortOption] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 6; // Adjust this value as needed
-  const isLoading = data.length === 0 && !loadingTimeout;
+  const postsPerPage = 6;
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoadingTimeout(true);
-    }, 5000); // Adjust timeout as needed
-    handleBlogs();
-    return () => clearTimeout(timer);
-  }, [handleBlogs]);
-
-  useEffect(() => {
-    if (data.length === 0) {
-      if (filteron) {
-        setShowModal(true);
-        setModalContent({
-          title: "No Posts in Selected Category",
-          body: "No posts available for this category.",
-        });
-      }
+    if (currentUser) {
+      handleBlogs();
     }
-  }, [data, loadingTimeout, filteron]);
+  }, [currentUser, handleBlogs]);
+
+  useEffect(() => {
+    if (data.length === 0 && filteron) {
+      setShowModal(true);
+      setModalContent({
+        title: "No Posts in Selected Category",
+        body: "No posts available for this category.",
+      });
+    }
+  }, [data, filteron]);
 
   const handleSortChange = (event) => {
     setSortOption(event.target.value);
@@ -71,89 +69,30 @@ function Posts() {
     } else if (selectedPosts.length > 0) {
       return selectedPosts.map((post) => <Post post={post} key={post.id} />);
     }
-    return null; // This will never show because modal or no posts message will be displayed
+    return null;
   };
 
-  const handlePageChange = (value) => {
+  const handlePageChange = (event, value) => {
     setCurrentPage(value);
   };
 
-  return (
-    <div className="posts-container">
-      <div className="filter-wrapper">
-        {filteron && (
-          <div>
-            <button className="reset" onClick={handleFilter}>
-              Reset
-            </button>
-            <div className="sortfilterOff">
-              <FormControl variant="outlined" className="sort-control">
-                <InputLabel>Sort By</InputLabel>
-                <Select
-                  value={sortOption}
-                  onChange={handleSortChange}
-                  label="Sort By"
-                >
-                  <MenuItem value="date" className="menuitem">
-                    Date
-                  </MenuItem>
-                  <MenuItem value="title" className="menuitem">
-                    Title
-                  </MenuItem>
-                  <MenuItem value="category" className="menuitem">
-                    Category
-                  </MenuItem>
-                </Select>
-              </FormControl>
-            </div>
-          </div>
-        )}
-        {!filteron && (
-          <div className="sortfilterOn">
-            <FormControl variant="outlined" className="sort-control">
-              <InputLabel>Sort By</InputLabel>
-              <Select
-                value={sortOption}
-                onChange={handleSortChange}
-                label="Sort By"
-              >
-                <MenuItem value="date" className="menuitem">
-                  Date
-                </MenuItem>
-                <MenuItem value="title" className="menuitem">
-                  Title
-                </MenuItem>
-                <MenuItem value="category" className="menuitem">
-                  Category
-                </MenuItem>
-              </Select>
-            </FormControl>
-          </div>
-        )}
-      </div>
-      <div className="middlecontent">
-        <div className="postcontent">
-          <div className={filteron ? "postsfilter" : "posts"}>
-            {isLoading ? (
-              <Backdrop
-                sx={{
-                  color: "#fff",
-                  zIndex: (theme) => theme.zIndex.drawer + 1,
-                }}
-                open={true}
-              >
-                <CircularProgress color="inherit" />
-              </Backdrop>
-            ) : (
-              renderPosts()
-            )}
-          </div>
-          <ErrorModal
-            isOpen={showModal}
-            toggle={() => setShowModal(!showModal)}
-            title={modalContent.title}
-            body={modalContent.body}
-          />
+  const renderContent = () => {
+    if (!currentUser) {
+      return <LoginPrompt />;
+    }
+
+    if (loadingStatus === "loading") {
+      return <SimpleLoader />;
+    }
+
+    if (loadingStatus === "error") {
+      return <div>Error loading posts. Please try again later.</div>;
+    }
+
+    return (
+      <>
+        <div className={filteron ? "postsfilter" : "posts"}>
+          {renderPosts()}
         </div>
         <div className="pagination">
           <Stack spacing={2}>
@@ -170,6 +109,47 @@ function Posts() {
             />
           </Stack>
         </div>
+      </>
+    );
+  };
+
+  return (
+    <div className="posts-container">
+      <div className="filter-wrapper">
+        {filteron && (
+          <button className="reset" onClick={handleFilter}>
+            Reset
+          </button>
+        )}
+        <div className={filteron ? "sortfilterOff" : "sortfilterOn"}>
+          <FormControl variant="outlined" className="sort-control">
+            <InputLabel>Sort By</InputLabel>
+            <Select
+              value={sortOption}
+              onChange={handleSortChange}
+              label="Sort By"
+            >
+              <MenuItem value="date" className="menuitem">
+                Date
+              </MenuItem>
+              <MenuItem value="title" className="menuitem">
+                Title
+              </MenuItem>
+              <MenuItem value="category" className="menuitem">
+                Category
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+      </div>
+      <div className="middlecontent">
+        <div className="postcontent">{renderContent()}</div>
+        <ErrorModal
+          isOpen={showModal}
+          toggle={() => setShowModal(!showModal)}
+          title={modalContent.title}
+          body={modalContent.body}
+        />
       </div>
     </div>
   );
