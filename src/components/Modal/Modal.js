@@ -1,42 +1,30 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import "./Modal.css";
 import { MdDelete } from "react-icons/md";
 
-const Modal = ({ onDelete }) => {
+const Modal = ({ onDelete, postId }) => {
   const [showModal, setShowModal] = useState(false);
-  const deleteIconRef = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        deleteIconRef.current &&
-        !deleteIconRef.current.contains(event.target)
-      ) {
-        setShowModal(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
 
   const handleDelete = () => {
-    onDelete();
+    //console.log("Delete button clicked");
+    onDelete(postId);
     setShowModal(false);
   };
 
   const handleCancel = () => {
+    //console.log("Cancel button clicked");
     setShowModal(false);
   };
 
   return (
     <>
-      <div ref={deleteIconRef}>
+      <div>
         <MdDelete
           className="singlePostDeleteIcon"
-          onClick={() => setShowModal(true)}
+          onClick={() => {
+            //console.log("Delete icon clicked");
+            setShowModal(true);
+          }}
         />
       </div>
       {showModal && (
