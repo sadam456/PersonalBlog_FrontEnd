@@ -7,19 +7,24 @@ function ProviderBlog({ children }) {
   const [alldata, setAllData] = useState([]);
   const [filteron, setFilterOn] = useState(false);
   const [favoritePosts, setFavoritePosts] = useState([]);
+  const [loadingStatus, setLoadingStatus] = useState("loading");
   const { currentUser } = useAuth();
 
   const loadBlogs = useCallback(async () => {
     if (!currentUser) {
       console.error("No current user, cannot load blogs");
+      setLoadingStatus("error");
       return;
     }
     try {
+      setLoadingStatus("loading");
       const response = await axios.get(
         `https://personalblog-backend.onrender.com/blog/user/${currentUser.uid}`
       );
+      setLoadingStatus("complete");
       return response.data;
     } catch (error) {
+      setLoadingStatus("error");
       console.error("Error fetching blogs:", error);
     }
   }, [currentUser]);
@@ -39,6 +44,25 @@ function ProviderBlog({ children }) {
     }
   }, [currentUser, loadBlogs]);
 
+  useEffect(() => {
+    let intervalId;
+    
+    const checkBlogStatus = async () => {
+      const blogs = await loadBlogs();
+      if (blogs && blogs.length > 0) {
+        handleBlogs();
+        clearInterval(intervalId);
+      }
+    };
+
+    if (currentUser) {
+      intervalId = setInterval(checkBlogStatus, 5000); // Check every 5 seconds
+    }
+
+    return () => clearInterval(intervalId);
+  }, [currentUser, loadBlogs, handleBlogs]);
+
+  
   useEffect(() => {
     handleBlogs();
   }, [handleBlogs]);
@@ -102,6 +126,7 @@ function ProviderBlog({ children }) {
     data,
     filteron,
     favoritePosts,
+    loadingStatus,
     removeFavoritePosts,
     addFavoritePost,
     handleFilter,
