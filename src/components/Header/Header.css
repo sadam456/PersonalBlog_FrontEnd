@@ -158,7 +158,6 @@
     align-items: flex-start;
     justify-content: flex-start;
     position: fixed;
-    top: 47px;
     left: 0px;
     width: 300px;
     height: 100vh;
@@ -279,7 +278,6 @@
     margin-left: 0.5vw;
   }
   .list {
-    top: 42px;
     width: 200px;
   }
   .mobile-social {
