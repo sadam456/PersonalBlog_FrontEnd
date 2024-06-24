@@ -1,0 +1,68 @@
+.LoginPrompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.Login-text {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.Login-header {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2d3748; /* Darker shade of gray */
+  margin-bottom: 10px;
+  position: relative;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.LoginPrompt-text {
+  font-size: 1.75rem; /* Slightly larger font size */
+  font-weight: bold;
+  color: #4a5568;
+  height: 2.5rem; /* Slightly taller height */
+  animation: textFade 3s infinite;
+}
+
+@keyframes textFade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
