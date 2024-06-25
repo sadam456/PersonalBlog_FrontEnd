@@ -16,7 +16,7 @@ import LoginPrompt from "../LoginPrompt/LoginPrompt";
 import { useAuth } from "../../context/AuthContext";
 
 function Posts() {
-  const { data, filteron, loadingStatus, handleFilter, handleBlogs } =
+  const { data, filteron, loadingStatus, handleFilter } =
     useContext(BlogContext);
   const { currentUser } = useAuth();
 
@@ -25,12 +25,6 @@ function Posts() {
   const [sortOption, setSortOption] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 6;
-
-  useEffect(() => {
-    if (currentUser) {
-      handleBlogs();
-    }
-  }, [currentUser, handleBlogs]);
 
   useEffect(() => {
     if (data.length === 0 && filteron) {
