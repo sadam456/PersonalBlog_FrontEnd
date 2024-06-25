@@ -6,6 +6,9 @@ import {
   setDocFn,
   signInWithEmailAndPasswordFn,
   createUserWithEmailAndPasswordFn,
+  updatePasswordFn,
+  reauthenticateWithCredentialFn,
+  EmailAuthProviderFn,
 } from "../utils/firebaseConfig";
 import { signOut, signInWithPopup } from "firebase/auth";
 
@@ -71,7 +74,26 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     await signOut(auth);
     setCurrentUser(null);
-    window.location.reload();
+  };
+
+  const updatePassword = async (currentPassword, newPassword) => {
+    try {
+      const user = auth.currentUser;
+      const credential = EmailAuthProviderFn.credential(
+        user.email,
+        currentPassword
+      );
+      await reauthenticateWithCredentialFn(user, credential);
+      await updatePasswordFn(user, newPassword);
+      return { success: true, message: "Password updated successfully" };
+    } catch (error) {
+      console.error("Error updating password:", error);
+      return { success: false, message: error.message };
+    }
+  };
+
+  const resetPassword = (email) => {
+    return auth.sendPasswordResetEmail(email);
   };
 
   const value = {
@@ -80,6 +102,8 @@ export const AuthProvider = ({ children }) => {
     login,
     register,
     logout,
+    updatePassword,
+    resetPassword,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
