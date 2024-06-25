@@ -1,15 +1,37 @@
+body {
+  background: linear-gradient(135deg, #b5d6e6, #e6f2f7);
+}
+
+.h-custom1 {
+  margin-top: 50px;
+  min-height: 100vh;
+}
+
+.my-5 {
+  margin-top: 1rem !important;
+  margin-bottom: 3rem !important;
+}
+
+.shadow-5,
+.p-5 {
+  background: linear-gradient(to right, #e6e6e6, #f9f9f9);
+}
+
 .lottie-animation {
   width: 100%;
-  height: 500px;
+  height: 500px; /* Ensure this value fits well for your design */
 }
+
 .chkbox {
   width: 100%;
   right: 100px;
 }
+
 .wide-btn {
   width: 110%;
   right: 100px;
 }
+
 .btn-social {
   background-color: #3b71ca;
   border: 1px solid #ddd;
@@ -28,6 +50,7 @@
   color: white;
 }
 
+/* Responsive styles */
 @media screen and (max-width: 1024px) {
   .chkbox {
     width: 100%;
@@ -39,9 +62,8 @@
   }
 }
 
-/* Responsive styles */
 @media screen and (max-width: 768px) {
-  .h-custom {
+  .h-custom1 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,9 +73,27 @@
   .lottie-animation {
     height: 300px;
   }
+
+  .mdb-card {
+    padding: 1rem !important;
+  }
+
+  .form-outline {
+    margin-bottom: 1rem;
+  }
+
+  .form-outline input.form-control {
+    padding: 0.5rem;
+  }
+
+  .form-outline .form-control ~ .form-label {
+    padding: 0.25rem;
+  }
+
   .chkbox {
     width: 200px;
   }
+
   .wide-btn {
     width: 100%;
     left: 0;
@@ -82,13 +122,14 @@
 }
 
 @media screen and (max-width: 480px) {
-  .h-custom {
+  .h-custom1 {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 1rem 0.5rem;
-    height: 260vw;
+    height: 165vh;
   }
+
   .wide-btn {
     width: 100%;
     left: 0;
@@ -108,5 +149,23 @@
 
   .text-center {
     text-align: center;
+  }
+}
+
+@media screen and (width: 375px) {
+  .h-custom1 {
+    height: 225vh;
+  }
+}
+
+@media screen and (width: 390px), screen and (width: 344px) {
+  .h-custom1 {
+    height: 175vh;
+  }
+}
+
+@media screen and (width: 360px) {
+  .h-custom1 {
+    height: 205vh;
   }
 }
