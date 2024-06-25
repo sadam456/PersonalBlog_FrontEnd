@@ -1,34 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import { useMediaQuery, useTheme } from "@mui/material";
 import {
-  MDBContainer,
-  MDBCol,
-  MDBRow,
-  MDBBtn,
-  MDBIcon,
-  MDBInput,
-  MDBCard,
-  MDBCardBody,
-  MDBCheckbox,
-} from "mdb-react-ui-kit";
+  Container,
+  Grid,
+  Button,
+  TextField,
+  Checkbox,
+  FormControlLabel,
+  Typography,
+  Card,
+  CardContent,
+  Box,
+  Divider,
+  IconButton,
+} from "@mui/material";
+import { Facebook, Twitter, Google } from "@mui/icons-material";
 import { Form } from "antd";
 import Lottie from "react-lottie-player";
 import animationlogin from "../../assets/Login.json";
-import PasswordInput from "../Register/PasswordInput";
 import { googleProvider } from "../../utils/firebaseConfig";
-import "./Login.css"; // Ensure this imports your custom styles
+import { InputAdornment } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import "./Login.css";
 
-function App() {
+function Login() {
   const [form] = Form.useForm();
   const { login, socialLogin } = useAuth();
   const navigate = useNavigate();
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = (event) => event.preventDefault();
+
   const onFinish = async (values) => {
     const { email, password } = values;
     try {
       const user = await login(email, password);
       console.log("Logged in user ID: ", user.uid);
-      navigate("/"); // Redirect to dashboard or any other page
+      navigate("/");
     } catch (error) {
       alert(error.message);
     }
@@ -43,62 +57,62 @@ function App() {
       alert(error.message);
     }
   };
+
   return (
-    <MDBContainer fluid className="p-3 my-5 h-custom">
-      <MDBRow>
-        <MDBCol col="10" md="6" className="d-flex align-items-center">
-          <Lottie
-            loop
-            animationData={animationlogin}
-            play
-            className="lottie-animation"
-          />
-        </MDBCol>
-        <MDBCol col="4" md="6">
-          <MDBCard className="shadow-5">
-            <MDBCardBody className="p-5 d-flex flex-column align-items-center">
-              <div className="d-flex flex-column align-items-center justify-content-center mb-4">
-                <p className="lead fw-normal mb-0 me-3">Sign in with</p>
-                <div className="d-flex justify-content-center">
-                  <MDBBtn
-                    floating
-                    size="md"
-                    tag="a"
-                    className="me-2 btn-social"
-                  >
-                    <MDBIcon fab icon="facebook-f" />
-                  </MDBBtn>
-
-                  <MDBBtn
-                    floating
-                    size="md"
-                    tag="a"
-                    className="me-2 btn-social"
-                  >
-                    <MDBIcon fab icon="twitter" />
-                  </MDBBtn>
-
-                  <MDBBtn
-                    floating
-                    size="md"
-                    tag="a"
-                    className="me-2 btn-social"
+    <Container maxWidth="lg" className="p-3 my-5 h-custom">
+      <Grid container spacing={4} alignItems="center">
+        <Grid item xs={12} md={6}>
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            height="100%"
+          >
+            <Lottie
+              loop
+              animationData={animationlogin}
+              play
+              style={{ width: "100%", maxHeight: "500px" }}
+            />
+          </Box>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Card className="shadow-5">
+            <CardContent className="p-5">
+              <Box
+                display="flex"
+                flexDirection="column"
+                alignItems="center"
+                mb={4}
+              >
+                <Typography variant="h6" mb={2}>
+                  Sign in with
+                </Typography>
+                <Box display="flex" justifyContent="center">
+                  <IconButton className="btn-social">
+                    <Facebook />
+                  </IconButton>
+                  <IconButton className="btn-social">
+                    <Twitter />
+                  </IconButton>
+                  <IconButton
+                    className="btn-social"
                     onClick={() => handleSocialLogin(googleProvider)}
                   >
-                    <MDBIcon fab icon="google" />
-                  </MDBBtn>
-                </div>
-                <div className="divider d-flex  my-4">
-                  <p className="text-center fw-bold mb-0">Or</p>
-                </div>
-              </div>
+                    <Google />
+                  </IconButton>
+                </Box>
+                <Divider style={{ width: "100%", margin: "20px 0" }}>
+                  <Typography variant="body2">Or</Typography>
+                </Divider>
+              </Box>
+
               <Form
                 form={form}
-                name="dependencies"
-                autoComplete="off"
+                name="login"
                 onFinish={onFinish}
                 layout="vertical"
-                className="w-100" // Ensure the form takes full width
+                style={{ width: "100%" }}
               >
                 <Form.Item
                   name="email"
@@ -107,60 +121,83 @@ function App() {
                       type: "email",
                       message: "The input is not valid E-mail!",
                     },
-                    {
-                      required: true,
-                      message: "Please input your E-mail!",
-                    },
+                    { required: true, message: "Please input your E-mail!" },
                   ]}
                 >
-                  <MDBInput
-                    wrapperClass="mb-3 form-input" // Add a custom class for responsive width
+                  <TextField
+                    fullWidth
                     label="Email address"
-                    id="formControlLg"
-                    type="email"
-                    size="md"
-                    required
+                    variant="outlined"
                   />
                 </Form.Item>
-                <Form.Item name="password">
-                  <PasswordInput
-                    wrapperClass="mb-3 form-input" // Add a custom class for responsive width
+                <Form.Item
+                  name="password"
+                  rules={[
+                    { required: true, message: "Please input your password!" },
+                  ]}
+                >
+                  <TextField
+                    fullWidth
                     label="Password"
-                    id="form1"
-                    required
+                    type={showPassword ? "text" : "password"}
+                    variant="outlined"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
                   />
                 </Form.Item>
+                <Grid container spacing={2} alignItems="center" mb={2}>
+                  <Grid item xs={12} sm={6}>
+                    <FormControlLabel
+                      control={<Checkbox />}
+                      label="Remember me"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={6}
+                    style={{ textAlign: isSmallScreen ? "left" : "right" }}
+                  >
+                    <Link href="#!" variant="body2">
+                      Forgot password?
+                    </Link>
+                  </Grid>
+                </Grid>
 
-                <div className="d-flex justify-content-between mb-4 w-100">
-                  <MDBCheckbox
-                    name="flexCheck"
-                    value=""
-                    id="flexCheckDefault"
-                    label="Remember me"
-                  />
-                  <a href="#!">Forgot password?</a>
-                </div>
-
-                <MDBBtn
-                  className="mb-1 px-5"
-                  size="lg"
-                  style={{ width: "100%" }}
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                  size="large"
                 >
                   Login
-                </MDBBtn>
+                </Button>
               </Form>
-              <p className="small fw-bold mt-2 pt-1 mb-2">
+              <Typography variant="body2" align="center" mt={2}>
                 Don't have an account?{" "}
                 <Link to="/register" className="link-danger">
                   Register
                 </Link>
-              </p>
-            </MDBCardBody>
-          </MDBCard>
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </Container>
   );
 }
 
-export default App;
+export default Login;
