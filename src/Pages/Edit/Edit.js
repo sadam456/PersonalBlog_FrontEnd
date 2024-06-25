@@ -16,6 +16,7 @@ import CategorySelector from "../../components/Catogories/CategorySelector";
 import convertBinaryToBase64 from "../../components/BinarytoImage/convertBinaryToBase64";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import BlogContext from "../../context/BlogPost";
 
 const initial = {
   id: "",
@@ -45,6 +46,7 @@ const toolbarOptions2 = [
 
 function Edit() {
   const { selectedCategories, setSelectedCategories } = useContext(WritePost);
+  const { handleBlogs } = useContext(BlogContext);
   const [form, setForm] = useState(initial);
   const [value, setValue] = useState("");
   const { id } = useParams();
@@ -131,6 +133,7 @@ function Edit() {
           )
           .then((response) => {
             console.log("Post successful:", response.data);
+            handleBlogs();
             navigate("/");
           })
           .catch((error) => {
@@ -154,6 +157,7 @@ function Edit() {
         )
         .then((response) => {
           console.log("Post successful:", response.data);
+          handleBlogs();
           navigate("/");
         })
         .catch((error) => {
@@ -173,6 +177,7 @@ function Edit() {
         )
         .then((response) => {
           console.log("Post successful:", response.data);
+          handleBlogs();
           navigate("/");
         })
         .catch((error) => {
