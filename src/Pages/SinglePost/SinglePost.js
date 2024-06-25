@@ -58,6 +58,7 @@ function SinglePost() {
       );
       console.log("Delete successful");
       navigate("/");
+      window.location.reload();
     } catch (error) {
       console.error("Error deleting post:", error);
     }
