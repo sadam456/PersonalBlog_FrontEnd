@@ -135,6 +135,7 @@ function Edit() {
             console.log("Post successful:", response.data);
             handleBlogs();
             navigate("/");
+            window.location.reload();
           })
           .catch((error) => {
             console.error("Error posting data:", error);
@@ -159,6 +160,7 @@ function Edit() {
           console.log("Post successful:", response.data);
           handleBlogs();
           navigate("/");
+          window.location.reload();
         })
         .catch((error) => {
           console.error("Error posting data:", error);
@@ -179,6 +181,7 @@ function Edit() {
           console.log("Post successful:", response.data);
           handleBlogs();
           navigate("/");
+          window.location.reload();
         })
         .catch((error) => {
           console.error("Error posting data:", error);
