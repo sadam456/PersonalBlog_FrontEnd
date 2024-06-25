@@ -15,7 +15,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import BlogContext from "./context/BlogPost";
 import { ProviderUser } from "./context/UserDetails";
 import PublicRoute from "./components/PublicRoute/PublicRoute";
-
+import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 function App() {
   const { handleBlogs } = useContext(BlogContext);
 
@@ -67,6 +67,7 @@ function App() {
             }
           />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
         </Route>
       </Routes>
     </>
