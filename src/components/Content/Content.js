@@ -9,7 +9,7 @@ function Content() {
     <div className="content">
       <div className="headerTitles">
         <span className="headerTitleSm">
-          {userProfile.firstName}'s Personal
+          {userProfile.firstName ? userProfile.firstName + `'s` : "Your"}
         </span>
         <span className="headerTitleLg">Blog</span>
         <Lottie
