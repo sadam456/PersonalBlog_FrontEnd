@@ -3,7 +3,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import UpdateProfile from "../../components/UpdateProfile/UpdateProfile";
-//import UpdatePassword from "../../components/UpdateProfile/UpdatePassword";
+import UpdatePassword from "../../components/UpdateProfile/UpdatePassword";
 import PricavyPolicy from "../../components/UpdateProfile/PricavyPolicy";
 import UpdateAboutMe from "../../components/UpdateProfile/UpdateAboutMe";
 import Typography from "@mui/material/Typography";
@@ -64,7 +64,7 @@ export default function Profile() {
       >
         <Tab label="Update Profile" />
         <Tab label="Update About Me" />
-        {/*  <Tab label="Change Password" /> */}
+        <Tab label="Change Password" />
         <Tab label="Privacy Policy" />
       </Tabs>
       <TabPanel value={value} index={0}>
@@ -77,13 +77,12 @@ export default function Profile() {
           <UpdateAboutMe />
         </ProviderUser>
       </TabPanel>
-      {/*
       <TabPanel value={value} index={2}>
         <ProviderUser>
           <UpdatePassword />
         </ProviderUser>
-      </TabPanel> */}
-      <TabPanel value={value} index={2}>
+      </TabPanel>
+      <TabPanel value={value} index={3}>
         <ProviderUser>
           <PricavyPolicy />
         </ProviderUser>
