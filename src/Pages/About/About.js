@@ -7,6 +7,7 @@ import BlogContext from "../../context/BlogPost";
 import AboutPost from "../../components/AboutPost/AboutPost";
 import animationFav from "../../assets/Favorite.json";
 import Lottie from "react-lottie-player";
+import { useAuth } from "../../context/AuthContext";
 import {
   FaFacebook,
   FaInstagramSquare,
@@ -19,6 +20,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 const About = () => {
   const { userProfile, imagesource } = useContext(UserContext);
   const { favoritePosts } = useContext(BlogContext);
+  const { currentUser } = useAuth();
 
   const renderFavPosts = () => {
     if (favoritePosts.length === 1) {
