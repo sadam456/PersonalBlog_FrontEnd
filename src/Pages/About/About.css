@@ -40,6 +40,17 @@
   margin-top: 10px;
 }
 
+.profile-photo1 {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #f0f0f0;
+  color: rgba(36, 66, 97, 0.5);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+
 .bio {
   font-size: 1.2em;
   line-height: 1.6;
