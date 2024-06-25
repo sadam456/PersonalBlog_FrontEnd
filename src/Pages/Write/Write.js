@@ -9,6 +9,7 @@ import "react-quill/dist/quill.snow.css";
 import WritePost from "../../context/WritePost";
 import CategorySelector from "../../components/Catogories/CategorySelector";
 import imageHolder from "../../assets/imageholder.png";
+import BlogContext from "../../context/BlogPost";
 const initial = {
   id: "",
   title: "",
@@ -36,6 +37,7 @@ const toolbarOptions1 = [
 ];
 function Write() {
   const { selectedCategories } = useContext(WritePost);
+  const { handleBlogs } = useContext(BlogContext);
   const [form, setForm] = useState(initial);
   const [value, setValue] = useState("");
   const [previewImage, setPreviewImage] = useState(null);
@@ -98,6 +100,7 @@ function Write() {
       )
       .then((response) => {
         console.log("Post successful:", response.data);
+        handleBlogs();
         navigate("/");
       })
       .catch((error) => {
