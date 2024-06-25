@@ -3,27 +3,37 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { googleProvider } from "../../utils/firebaseConfig";
 import {
-  MDBContainer,
-  MDBCol,
-  MDBRow,
-  MDBBtn,
-  MDBCard,
-  MDBCardBody,
-  MDBInput,
-  MDBIcon,
-} from "mdb-react-ui-kit";
+  Container,
+  Grid,
+  Card,
+  CardContent,
+  Button,
+  TextField,
+  Checkbox,
+  FormControlLabel,
+  Typography,
+  IconButton,
+  Box,
+} from "@mui/material";
+import { Facebook, Twitter, Google, GitHub } from "@mui/icons-material";
 import Lottie from "react-lottie-player";
 import animationregister from "../../assets/Register.json";
 import AgreementModal from "../../components/AggrementModal/AggrementModal";
-import { Form, Checkbox } from "antd";
-import PasswordInput from "./PasswordInput"; // Import the custom PasswordInput component
-import "./Register.css"; // Ensure this imports your custom styles
+import { Form } from "antd";
+import { InputAdornment } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import "./Register.css";
 
 function Register() {
   const [form] = Form.useForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const { register, socialLogin } = useAuth();
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = (event) => event.preventDefault();
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -37,7 +47,7 @@ function Register() {
         lastName: user.lastName,
       };
       await register(email, password, newUser);
-      navigate("/profile"); // Redirect to profile or any other page
+      navigate("/profile");
     } catch (error) {
       alert(error.message);
     }
@@ -52,48 +62,36 @@ function Register() {
     }
   };
 
-  const tailFormItemLayout = {
-    wrapperCol: {
-      xs: {
-        span: 24,
-        offset: 0,
-      },
-      sm: {
-        span: 16,
-        offset: 8,
-      },
-    },
-  };
-
   return (
-    <MDBContainer fluid className="p-4 h-custom1">
-      <MDBRow>
-        <MDBCol
-          md="6"
-          className="text-center text-md-start d-flex flex-column justify-content-center"
-        >
-          <Lottie
-            loop
-            animationData={animationregister}
-            play
-            className="lottie-animation"
-          />
-        </MDBCol>
-        <MDBCol md="6">
-          <MDBCard className="my-5 shadow-5">
-            <MDBCardBody className="p-5 d-flex flex-column align-items-center">
+    <Container maxWidth="lg" className="h-custom1">
+      <Grid container spacing={4} alignItems="center">
+        <Grid item xs={12} md={6}>
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            height="100%"
+          >
+            <Lottie
+              loop
+              animationData={animationregister}
+              play
+              style={{ width: "100%", height: "500px" }}
+            />
+          </Box>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Card className="my-5 shadow-5">
+            <CardContent className="p-5">
               <Form
                 form={form}
-                name="dependencies"
-                autoComplete="off"
+                name="register"
                 onFinish={onFinish}
-                style={{
-                  maxWidth: 600,
-                }}
                 layout="vertical"
+                style={{ width: "100%" }}
               >
-                <MDBRow>
-                  <MDBCol md="6">
+                <Grid container spacing={2}>
+                  <Grid item xs={12} sm={6}>
                     <Form.Item
                       name={["user", "firstName"]}
                       rules={[
@@ -103,15 +101,14 @@ function Register() {
                         },
                       ]}
                     >
-                      <MDBInput
-                        wrapperClass="mb-2"
+                      <TextField
+                        fullWidth
                         label="First name"
-                        type="text"
+                        variant="outlined"
                       />
                     </Form.Item>
-                  </MDBCol>
-
-                  <MDBCol md="6">
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
                     <Form.Item
                       name={["user", "lastName"]}
                       rules={[
@@ -121,28 +118,21 @@ function Register() {
                         },
                       ]}
                     >
-                      <MDBInput
-                        wrapperClass="mb-3"
+                      <TextField
+                        fullWidth
                         label="Last name"
-                        type="text"
+                        variant="outlined"
                       />
                     </Form.Item>
-                  </MDBCol>
-                </MDBRow>
+                  </Grid>
+                </Grid>
                 <Form.Item
                   name={["user", "username"]}
                   rules={[
-                    {
-                      required: true,
-                      message: "Please input your username!",
-                    },
+                    { required: true, message: "Please input your username!" },
                   ]}
                 >
-                  <MDBInput
-                    wrapperClass="w-100 mb-3"
-                    label="Username"
-                    type="text"
-                  />
+                  <TextField fullWidth label="Username" variant="outlined" />
                 </Form.Item>
                 <Form.Item
                   name="email"
@@ -151,27 +141,42 @@ function Register() {
                       type: "email",
                       message: "The input is not valid E-mail!",
                     },
-                    {
-                      required: true,
-                      message: "Please input your E-mail!",
-                    },
+                    { required: true, message: "Please input your E-mail!" },
                   ]}
                 >
-                  <MDBInput
-                    wrapperClass="w-100 mb-3"
+                  <TextField
+                    fullWidth
                     label="Email"
+                    variant="outlined"
                     type="email"
                   />
                 </Form.Item>
                 <Form.Item
                   name="password"
                   rules={[
-                    {
-                      required: true,
-                    },
+                    { required: true, message: "Please input your password!" },
                   ]}
                 >
-                  <PasswordInput wrapperClass="mb-3" label="Password" />
+                  <TextField
+                    fullWidth
+                    label="Password"
+                    type={showPassword ? "text" : "password"}
+                    variant="outlined"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
                 </Form.Item>
                 <Form.Item
                   name="confirmPassword"
@@ -179,6 +184,7 @@ function Register() {
                   rules={[
                     {
                       required: true,
+                      message: "Please confirm your password!",
                     },
                     ({ getFieldValue }) => ({
                       validator(_, value) {
@@ -186,15 +192,32 @@ function Register() {
                           return Promise.resolve();
                         }
                         return Promise.reject(
-                          new Error(
-                            "The passwords that you entered do not match!"
-                          )
+                          new Error("The passwords do not match!")
                         );
                       },
                     }),
                   ]}
                 >
-                  <PasswordInput wrapperClass="mb-2" label="Confirm Password" />
+                  <TextField
+                    fullWidth
+                    label="Confirm Password"
+                    type={showPassword ? "text" : "password"}
+                    variant="outlined"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
                 </Form.Item>
                 <Form.Item
                   name="agreement"
@@ -209,67 +232,64 @@ function Register() {
                             ),
                     },
                   ]}
-                  {...tailFormItemLayout}
                 >
-                  <Checkbox>
-                    <span>
-                      I have read the{" "}
-                      <button
-                        onClick={openModal}
-                        style={{ color: "red", textDecoration: "underline" }}
-                      >
-                        Agreement
-                      </button>
-                      <AgreementModal
-                        isOpen={isModalOpen}
-                        onClose={closeModal}
-                      />
-                    </span>
-                  </Checkbox>
+                  <FormControlLabel
+                    control={<Checkbox />}
+                    label={
+                      <span>
+                        I have read the
+                        <Button
+                          onClick={openModal}
+                          style={{ color: "red", textDecoration: "underline" }}
+                        >
+                          Agreement
+                        </Button>
+                      </span>
+                    }
+                  />
                 </Form.Item>
-                <Form.Item {...tailFormItemLayout}>
-                  <MDBBtn className="wide-btn  mb-3" size="md" type="submit">
-                    Sign up
-                  </MDBBtn>
-                </Form.Item>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                  size="large"
+                >
+                  Sign up
+                </Button>
               </Form>
-
-              <div className="text-center">
-                <p>or sign up with:</p>
-
-                <MDBBtn floating size="md" tag="a" className="me-2 btn-social">
-                  <MDBIcon fab icon="facebook-f" size="sm" />
-                </MDBBtn>
-
-                <MDBBtn floating size="md" tag="a" className="me-2 btn-social">
-                  <MDBIcon fab icon="twitter" size="sm" />
-                </MDBBtn>
-
-                <MDBBtn
-                  floating
-                  size="md"
-                  tag="a"
-                  className="me-2 btn-social"
-                  onClick={handleGoogleSignIn}
-                >
-                  <MDBIcon fab icon="google" size="sm" />
-                </MDBBtn>
-
-                <MDBBtn floating size="md" tag="a" className="me-2 btn-social">
-                  <MDBIcon fab icon="github" size="sm" />
-                </MDBBtn>
-              </div>
-              <p className="small fw-bold mt-2 pt-1 mb-2">
-                Don't have an account?{" "}
+              <AgreementModal isOpen={isModalOpen} onClose={closeModal} />
+              <Box textAlign="center" mt={2}>
+                <Typography variant="body1">or sign up with:</Typography>
+                <Box display="flex" justifyContent="center" mt={1}>
+                  <IconButton className="btn-social">
+                    <Facebook />
+                  </IconButton>
+                  <IconButton className="btn-social">
+                    <Twitter />
+                  </IconButton>
+                  <IconButton
+                    className="btn-social"
+                    onClick={handleGoogleSignIn}
+                  >
+                    <Google />
+                  </IconButton>
+                  <IconButton className="btn-social">
+                    <GitHub />
+                  </IconButton>
+                </Box>
+              </Box>
+              <Typography variant="body2" align="center" mt={2}>
+                Already have an account?{" "}
                 <Link to="/login" className="link-danger">
                   Login
                 </Link>
-              </p>
-            </MDBCardBody>
-          </MDBCard>
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </Container>
   );
 }
 
