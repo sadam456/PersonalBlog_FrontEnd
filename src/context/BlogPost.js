@@ -43,29 +43,12 @@ function ProviderBlog({ children }) {
       setFilterOn(false);
     }
   }, [currentUser, loadBlogs]);
-
-  useEffect(() => {
-    let intervalId;
-    
-    const checkBlogStatus = async () => {
-      const blogs = await loadBlogs();
-      if (blogs && blogs.length > 0) {
-        handleBlogs();
-        clearInterval(intervalId);
-      }
-    };
-
-    if (currentUser) {
-      intervalId = setInterval(checkBlogStatus, 5000); // Check every 5 seconds
-    }
-
-    return () => clearInterval(intervalId);
-  }, [currentUser, loadBlogs, handleBlogs]);
-
   
   useEffect(() => {
-    handleBlogs();
-  }, [handleBlogs]);
+    if (currentUser) {
+      handleBlogs();
+    }
+  }, [currentUser, handleBlogs]);
 
   const handlePostsByCategory = async (category) => {
     const responce = await axios.get(
