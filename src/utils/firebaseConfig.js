@@ -5,6 +5,9 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  updatePassword,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
 } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -29,8 +32,11 @@ export const auth = getAuth(app);
 export const signInWithEmailAndPasswordFn = signInWithEmailAndPassword;
 export const createUserWithEmailAndPasswordFn = createUserWithEmailAndPassword;
 export const googleProvider = new GoogleAuthProvider();
+export const EmailAuthProviderFn = EmailAuthProvider;
 
 // Initialize Firestore and get a reference to the service
 export const firestore = getFirestore(app);
 export const docFn = doc;
 export const setDocFn = setDoc;
+export const updatePasswordFn = updatePassword;
+export const reauthenticateWithCredentialFn = reauthenticateWithCredential;
