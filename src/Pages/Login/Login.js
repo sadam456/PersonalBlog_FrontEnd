@@ -15,6 +15,7 @@ import {
   Box,
   Divider,
   IconButton,
+  Alert,
 } from "@mui/material";
 import { Facebook, Twitter, Google } from "@mui/icons-material";
 import { Form } from "antd";
@@ -33,6 +34,7 @@ function Login() {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = (event) => event.preventDefault();
@@ -44,7 +46,8 @@ function Login() {
       console.log("Logged in user ID: ", user.uid);
       navigate("/");
     } catch (error) {
-      alert(error.message);
+      console.error("Social login error:", error);
+      setError(getErrorMessage(error.code));
     }
   };
 
@@ -54,7 +57,23 @@ function Login() {
       console.log("Logged in user ID: ", user.uid);
       navigate("/");
     } catch (error) {
-      alert(error.message);
+      console.error("Social login error:", error);
+      setError(getErrorMessage(error.code));
+    }
+  };
+
+  const getErrorMessage = (errorCode) => {
+    switch (errorCode) {
+      case "auth/invalid-credential":
+      case "auth/user-not-found":
+      case "auth/wrong-password":
+        return "Incorrect email or password. Please try again.";
+      case "auth/too-many-requests":
+        return "Too many failed login attempts. Please try again later.";
+      case "auth/user-disabled":
+        return "This account has been disabled. Please contact support.";
+      default:
+        return "An error occurred during login. Please try again.";
     }
   };
 
@@ -79,6 +98,15 @@ function Login() {
         <Grid item xs={12} md={6}>
           <Card className="shadow-5">
             <CardContent className="p-5">
+              {error && (
+                <Alert
+                  severity="error"
+                  onClose={() => setError("")}
+                  sx={{ mb: 2 }}
+                >
+                  {error}
+                </Alert>
+              )}
               <Box
                 display="flex"
                 flexDirection="column"
@@ -170,7 +198,7 @@ function Login() {
                     sm={6}
                     style={{ textAlign: isSmallScreen ? "left" : "right" }}
                   >
-                    <Link href="#!" variant="body2">
+                    <Link to="/forgot-password" variant="body2">
                       Forgot password?
                     </Link>
                   </Grid>
