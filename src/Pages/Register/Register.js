@@ -14,6 +14,7 @@ import {
   Typography,
   IconButton,
   Box,
+  Alert,
 } from "@mui/material";
 import { Facebook, Twitter, Google, GitHub } from "@mui/icons-material";
 import Lottie from "react-lottie-player";
@@ -29,6 +30,7 @@ function Register() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const { register, socialLogin } = useAuth();
+  const [error, setError] = useState("");
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -49,7 +51,8 @@ function Register() {
       await register(email, password, newUser);
       navigate("/profile");
     } catch (error) {
-      alert(error.message);
+      console.error("Social login error:", error);
+      setError(getErrorMessage(error.code));
     }
   };
 
@@ -58,7 +61,21 @@ function Register() {
       await socialLogin(googleProvider);
       navigate("/profile");
     } catch (error) {
-      alert(error.message);
+      console.error("Social login error:", error);
+      setError(getErrorMessage(error.code));
+    }
+  };
+
+  const getErrorMessage = (errorCode) => {
+    switch (errorCode) {
+      case "auth/email-already-in-use":
+        return "Email alredy in use. Please login or use forgot password.";
+      case "auth/too-many-requests":
+        return "Too many failed login attempts. Please try again later.";
+      case "auth/user-disabled":
+        return "This account has been disabled. Please contact support.";
+      default:
+        return "An error occurred during login. Please try again.";
     }
   };
 
@@ -83,6 +100,15 @@ function Register() {
         <Grid item xs={12} md={6}>
           <Card className="my-5 shadow-5">
             <CardContent className="p-5">
+              {error && (
+                <Alert
+                  severity="error"
+                  onClose={() => setError("")}
+                  sx={{ mb: 2 }}
+                >
+                  {error}
+                </Alert>
+              )}
               <Form
                 form={form}
                 name="register"
