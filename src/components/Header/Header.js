@@ -28,6 +28,7 @@ function Header() {
     try {
       await logout();
       navigate("/login"); // Redirect to login page after logout
+      window.location.reload();
     } catch (error) {
       console.error("Failed to logout", error);
     }
