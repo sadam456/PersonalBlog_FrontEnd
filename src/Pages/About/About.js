@@ -11,6 +11,7 @@ import {
   FaFacebook,
   FaInstagramSquare,
   FaPinterest,
+  FaUserCircle,
   FaYoutube,
 } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
@@ -58,11 +59,15 @@ const About = () => {
     <div className="container">
       <div className="about-me">
         <div className="about-me-header">
-          <img
-            src={imagesource}
-            alt={userProfile.firstName}
-            className="profile-photo"
-          />
+        {currentUser ? (
+            <img
+              src={imagesource}
+              alt={userProfile.firstName}
+              className="profile-photo"
+            />
+          ) : (
+            <FaUserCircle className="profile-photo1" />
+          )}
           <h1 className="aboutmeh1">About Me</h1>
         </div>
         {userProfile.bio ? (
