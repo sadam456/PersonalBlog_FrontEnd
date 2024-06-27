@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
       password
     );
     setCurrentUser(userCredential.user);
-    console.log(userCredential.user);
+    //console.log(userCredential.user);
     return userCredential.user;
   };
 
