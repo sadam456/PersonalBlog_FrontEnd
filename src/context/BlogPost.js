@@ -76,7 +76,7 @@ function ProviderBlog({ children }) {
           },
         }
       );
-      console.log(response.data);
+      //console.log(response.data);
       setFavoritePosts((prevFavorites) => [...prevFavorites, post]);
     } catch (error) {
       console.error("Error adding favorite post:", error);
@@ -96,7 +96,7 @@ function ProviderBlog({ children }) {
           },
         }
       );
-      console.log(response.data);
+     //console.log(response.data);
       setFavoritePosts((prevFavorites) =>
         prevFavorites.filter((post) => post.id !== postId)
       );
